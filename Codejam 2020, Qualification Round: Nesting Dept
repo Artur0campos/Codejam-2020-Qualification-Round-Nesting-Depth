@@ -1,0 +1,23 @@
+# Codejam 2020, Qualification Round: Nesting Depth
+
+def nest(excess):
+    if excess > 0:
+        return excess * "("
+    elif excess < 0:
+        return -excess * ")"
+    return ""
+
+
+# I/O Code
+num_cases = int(input("number off cases"))
+for case in range(1, num_cases + 1):
+    number_list = list(map(int, input("number:")))
+
+    depth = 0
+    result = ""
+    for data in number_list:
+        result += nest(data - depth) + str(data)
+        depth = data
+    result += nest(-depth)
+
+    print(f"Case #{case}: {result}")
